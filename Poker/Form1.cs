@@ -18,6 +18,10 @@
 
         private const int TotalCardsInDeck = 52;
 
+        private const int DefaultCardHeight = 130;
+
+        private const int DefaultCardWidth = 80;
+
         private ProgressBar asd = new ProgressBar();
 
         public int Nm;
@@ -308,8 +312,8 @@
                 // initializing Cards' pictures
                 this.CardsPicturesHolder[this.i] = new PictureBox();
                 this.CardsPicturesHolder[this.i].SizeMode = PictureBoxSizeMode.StretchImage;
-                this.CardsPicturesHolder[this.i].Height = 130;
-                this.CardsPicturesHolder[this.i].Width = 80;
+                this.CardsPicturesHolder[this.i].Height = DefaultCardHeight;
+                this.CardsPicturesHolder[this.i].Width = DefaultCardWidth;
                 this.CardsPicturesHolder[this.i].Name = "pb" + this.i;
 
                 this.Controls.Add(this.CardsPicturesHolder[this.i]);
