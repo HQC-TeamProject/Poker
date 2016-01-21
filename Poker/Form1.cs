@@ -26,6 +26,9 @@
 
         public int Nm;
 
+        // these panels are the dark blue frame surrounding someone's cards at the end of the hand
+        // maybe the initial idea is someone's panel to be set to visible when it's his turn to act
+        // so you can easily recognize who's turn is it at the given moment. (iliyan)
         private readonly Panel pPanel = new Panel();
 
         private readonly Panel b1Panel = new Panel();
@@ -286,17 +289,18 @@
             int horizontal = 580;
             int vertical = 480;
 
+            // this loop is the logic behind shuffling the deck. everything else is not supposed to be here (iliyan)
             Random random = new Random();
             for (this.i = this.cardsImageLocations.Length; this.i > 0; this.i--)
             {
                 int j = random.Next(this.i);
 
-                // switching cardsImageLocations[j]  with cardsImageLocations[i-1]  ?? not clear why
                 var k = this.cardsImageLocations[j];
                 this.cardsImageLocations[j] = this.cardsImageLocations[this.i - 1];
                 this.cardsImageLocations[this.i - 1] = k;
             }
 
+            // this loop picks the first 17 cards from the shuffled deck which will be dealed and assigns then to the players
             for (this.i = 0; this.i < TotalCardsDealedPerHand; this.i++)
             {
                 this.Deck[this.i] = Image.FromFile(this.cardsImageLocations[this.i]);
@@ -309,7 +313,7 @@
 
                 this.Reserve[this.i] = int.Parse(this.cardsImageLocations[this.i]) - 1;
 
-                // initializing Cards' pictures
+                // initializing Cards' picturesBoxes
                 this.CardsPicturesHolder[this.i] = new PictureBox();
                 this.CardsPicturesHolder[this.i].SizeMode = PictureBoxSizeMode.StretchImage;
                 this.CardsPicturesHolder[this.i].Height = DefaultCardHeight;
@@ -319,14 +323,16 @@
                 this.Controls.Add(this.CardsPicturesHolder[this.i]);
                 await Task.Delay(200);
 
+                // first 2 cards to be dealt are for the player (human, not bots) and this is where it happens (iliyan)
                 if (this.i < 2)
                 {
-                    if (this.CardsPicturesHolder[0].Tag != null)
-                    {
-                        this.CardsPicturesHolder[1].Tag = this.Reserve[1];
-                    }
+                    // this block checks if the current player has already been dealt the first card
+                    //if (this.CardsPicturesHolder[0].Tag != null)
+                    //{
+                    //    this.CardsPicturesHolder[1].Tag = this.Reserve[1];
+                    //}
 
-                    this.CardsPicturesHolder[0].Tag = this.Reserve[0];
+                    this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
                     this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
                     this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom;
 
@@ -334,7 +340,7 @@
                     this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                     horizontal += this.CardsPicturesHolder[this.i].Width;
                     this.Controls.Add(this.pPanel);
-                    this.pPanel.Location = new Point(this.CardsPicturesHolder[0].Left - 10, this.CardsPicturesHolder[0].Top - 10);
+                    this.pPanel.Location = new Point(this.CardsPicturesHolder[this.i].Left - 10, this.CardsPicturesHolder[this.i].Top - 10);
                     this.pPanel.BackColor = Color.DarkBlue;
                     this.pPanel.Height = 150;
                     this.pPanel.Width = 180;
