@@ -326,25 +326,32 @@
                 // first 2 cards to be dealt are for the player (human, not bots) and this is where it happens (iliyan)
                 if (this.i < 2)
                 {
+                    //this.InitializePlayerPictureCards(AnchorStyles.Bottom, horizontal, vertical);
+                    this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
+                    this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
+                    this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom;
+                    this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
+                    this.CardsPicturesHolder[this.i].Visible = true;
+
+                    horizontal += this.CardsPicturesHolder[this.i].Width;
+
                     // this block checks if the current player has already been dealt the first card
                     //if (this.CardsPicturesHolder[0].Tag != null)
                     //{
                     //    this.CardsPicturesHolder[1].Tag = this.Reserve[1];
                     //}
 
-                    this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
-                    this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
-                    this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom;
 
                     // CardsPicturesHolder[i].Dock = DockStyle.Top;
-                    this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
-                    horizontal += this.CardsPicturesHolder[this.i].Width;
-                    this.Controls.Add(this.pPanel);
-                    this.pPanel.Location = new Point(this.CardsPicturesHolder[this.i].Left - 10, this.CardsPicturesHolder[this.i].Top - 10);
-                    this.pPanel.BackColor = Color.DarkBlue;
-                    this.pPanel.Height = 150;
-                    this.pPanel.Width = 180;
-                    this.pPanel.Visible = false;
+
+                    // initialize panel
+                    this.InitializePanel(this.pPanel);
+                    //this.Controls.Add(this.pPanel);
+                    //this.pPanel.Location = new Point(this.CardsPicturesHolder[this.i].Left - 10, this.CardsPicturesHolder[this.i].Top - 10);
+                    //this.pPanel.BackColor = Color.DarkBlue;
+                    //this.pPanel.Height = 150;
+                    //this.pPanel.Width = 180;
+                    //this.pPanel.Visible = false;
                 }
 
                 #region botChips conditions
@@ -353,12 +360,6 @@
                     this.foldedPlayers--;
                     if (this.i >= 2 && this.i < 4)
                     {
-                        if (this.CardsPicturesHolder[2].Tag != null)
-                        {
-                            this.CardsPicturesHolder[3].Tag = this.Reserve[3];
-                        }
-
-                        this.CardsPicturesHolder[2].Tag = this.Reserve[2];
                         if (!check)
                         {
                             horizontal = 15;
@@ -366,19 +367,32 @@
                         }
 
                         check = true;
+
+                        //if (this.CardsPicturesHolder[2].Tag != null)
+                        //{
+                        //    this.CardsPicturesHolder[3].Tag = this.Reserve[3];
+                        //}
+
+                        //this.InitializePlayerPictureCards(AnchorStyles.Bottom | AnchorStyles.Left, horizontal, vertical);
+                        this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
                         this.CardsPicturesHolder[this.i].Image = backImage;
+                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
+                        this.CardsPicturesHolder[this.i].Visible = true;
+
+                        horizontal += this.CardsPicturesHolder[this.i].Width;
 
                         // CardsPicturesHolder[i].Image = Deck[i];
-                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
-                        horizontal += this.CardsPicturesHolder[this.i].Width;
-                        this.CardsPicturesHolder[this.i].Visible = true;
-                        this.Controls.Add(this.b1Panel);
-                        this.b1Panel.Location = new Point(this.CardsPicturesHolder[2].Left - 10, this.CardsPicturesHolder[2].Top - 10);
-                        this.b1Panel.BackColor = Color.DarkBlue;
-                        this.b1Panel.Height = 150;
-                        this.b1Panel.Width = 180;
-                        this.b1Panel.Visible = false;
+
+
+                        this.InitializePanel(this.b1Panel);
+                        //this.Controls.Add(this.b1Panel);
+                        //this.b1Panel.Location = new Point(this.CardsPicturesHolder[2].Left - 10, this.CardsPicturesHolder[2].Top - 10);
+                        //this.b1Panel.BackColor = Color.DarkBlue;
+                        //this.b1Panel.Height = 150;
+                        //this.b1Panel.Width = 180;
+                        //this.b1Panel.Visible = false;
+
                         if (this.i == 3)
                         {
                             check = false;
@@ -391,33 +405,37 @@
                     this.foldedPlayers--;
                     if (this.i >= 4 && this.i < 6)
                     {
-                        if (this.CardsPicturesHolder[4].Tag != null)
-                        {
-                            this.CardsPicturesHolder[5].Tag = this.Reserve[5];
-                        }
-
-                        this.CardsPicturesHolder[4].Tag = this.Reserve[4];
-
                         if (!check)
                         {
                             horizontal = 75;
                             vertical = 65;
                         }
-
                         check = true;
+
+                        //if (this.CardsPicturesHolder[4].Tag != null)
+                        //{
+                        //    this.CardsPicturesHolder[5].Tag = this.Reserve[5];
+                        //}
+
+                        //this.InitializePlayerPictureCards(AnchorStyles.Top | AnchorStyles.Left, horizontal, vertical);
+                        this.CardsPicturesHolder[4].Tag = this.Reserve[4];
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Top | AnchorStyles.Left;
                         this.CardsPicturesHolder[this.i].Image = backImage;
+                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
+                        this.CardsPicturesHolder[this.i].Visible = true;
+
+                        horizontal += this.CardsPicturesHolder[this.i].Width;
 
                         // CardsPicturesHolder[i].Image = Deck[i];
-                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
-                        horizontal += this.CardsPicturesHolder[this.i].Width;
-                        this.CardsPicturesHolder[this.i].Visible = true;
-                        this.Controls.Add(this.b2Panel);
-                        this.b2Panel.Location = new Point(this.CardsPicturesHolder[4].Left - 10, this.CardsPicturesHolder[4].Top - 10);
-                        this.b2Panel.BackColor = Color.DarkBlue;
-                        this.b2Panel.Height = 150;
-                        this.b2Panel.Width = 180;
-                        this.b2Panel.Visible = false;
+
+                        this.InitializePanel(this.b2Panel);
+                        //this.Controls.Add(this.b2Panel);
+                        //this.b2Panel.Location = new Point(this.CardsPicturesHolder[4].Left - 10, this.CardsPicturesHolder[4].Top - 10);
+                        //this.b2Panel.BackColor = Color.DarkBlue;
+                        //this.b2Panel.Height = 150;
+                        //this.b2Panel.Width = 180;
+                        //this.b2Panel.Visible = false;
+
                         if (this.i == 5)
                         {
                             check = false;
@@ -430,32 +448,37 @@
                     this.foldedPlayers--;
                     if (this.i >= 6 && this.i < 8)
                     {
-                        if (this.CardsPicturesHolder[6].Tag != null)
-                        {
-                            this.CardsPicturesHolder[7].Tag = this.Reserve[7];
-                        }
-
-                        this.CardsPicturesHolder[6].Tag = this.Reserve[6];
                         if (!check)
                         {
                             horizontal = 590;
                             vertical = 25;
                         }
-
                         check = true;
+
+                        //if (this.CardsPicturesHolder[6].Tag != null)
+                        //{
+                        //    this.CardsPicturesHolder[7].Tag = this.Reserve[7];
+                        //}
+
+                        //this.InitializePlayerPictureCards(AnchorStyles.Top, horizontal, vertical);
+                        this.CardsPicturesHolder[6].Tag = this.Reserve[6];
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Top;
                         this.CardsPicturesHolder[this.i].Image = backImage;
+                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
+                        this.CardsPicturesHolder[this.i].Visible = true;
+
+                        horizontal += this.CardsPicturesHolder[this.i].Width;
 
                         // CardsPicturesHolder[i].Image = Deck[i];
-                        this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
-                        horizontal += this.CardsPicturesHolder[this.i].Width;
-                        this.CardsPicturesHolder[this.i].Visible = true;
-                        this.Controls.Add(this.b3Panel);
-                        this.b3Panel.Location = new Point(this.CardsPicturesHolder[6].Left - 10, this.CardsPicturesHolder[6].Top - 10);
-                        this.b3Panel.BackColor = Color.DarkBlue;
-                        this.b3Panel.Height = 150;
-                        this.b3Panel.Width = 180;
-                        this.b3Panel.Visible = false;
+
+                        this.InitializePanel(this.b3Panel);
+                        //this.Controls.Add(this.b3Panel);
+                        //this.b3Panel.Location = new Point(this.CardsPicturesHolder[6].Left - 10, this.CardsPicturesHolder[6].Top - 10);
+                        //this.b3Panel.BackColor = Color.DarkBlue;
+                        //this.b3Panel.Height = 150;
+                        //this.b3Panel.Width = 180;
+                        //this.b3Panel.Visible = false;
+
                         if (this.i == 7)
                         {
                             check = false;
@@ -488,12 +511,15 @@
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                         horizontal += this.CardsPicturesHolder[this.i].Width;
                         this.CardsPicturesHolder[this.i].Visible = true;
-                        this.Controls.Add(this.b4Panel);
-                        this.b4Panel.Location = new Point(this.CardsPicturesHolder[8].Left - 10, this.CardsPicturesHolder[8].Top - 10);
-                        this.b4Panel.BackColor = Color.DarkBlue;
-                        this.b4Panel.Height = 150;
-                        this.b4Panel.Width = 180;
-                        this.b4Panel.Visible = false;
+
+                        this.InitializePanel(this.b4Panel);
+                        //this.Controls.Add(this.b4Panel);
+                        //this.b4Panel.Location = new Point(this.CardsPicturesHolder[8].Left - 10, this.CardsPicturesHolder[8].Top - 10);
+                        //this.b4Panel.BackColor = Color.DarkBlue;
+                        //this.b4Panel.Height = 150;
+                        //this.b4Panel.Width = 180;
+                        //this.b4Panel.Visible = false;
+
                         if (this.i == 9)
                         {
                             check = false;
@@ -526,12 +552,15 @@
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                         horizontal += this.CardsPicturesHolder[this.i].Width;
                         this.CardsPicturesHolder[this.i].Visible = true;
-                        this.Controls.Add(this.b5Panel);
-                        this.b5Panel.Location = new Point(this.CardsPicturesHolder[10].Left - 10, this.CardsPicturesHolder[10].Top - 10);
-                        this.b5Panel.BackColor = Color.DarkBlue;
-                        this.b5Panel.Height = 150;
-                        this.b5Panel.Width = 180;
-                        this.b5Panel.Visible = false;
+
+                        this.InitializePanel(this.b5Panel);
+                        //this.Controls.Add(this.b5Panel);
+                        //this.b5Panel.Location = new Point(this.CardsPicturesHolder[10].Left - 10, this.CardsPicturesHolder[10].Top - 10);
+                        //this.b5Panel.BackColor = Color.DarkBlue;
+                        //this.b5Panel.Height = 150;
+                        //this.b5Panel.Width = 180;
+                        //this.b5Panel.Visible = false;
+
                         if (this.i == 11)
                         {
                             check = false;
@@ -720,6 +749,27 @@
                 this.bFold.Enabled = true;
             }
             #endregion
+        }
+
+        // this method is added by me (iliyan) [not finished]
+        private void InitializePlayerPictureCards(AnchorStyles anchorStyle, int horizontal, int vertical)
+        {
+            this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
+            this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
+            this.CardsPicturesHolder[this.i].Anchor = anchorStyle;
+            this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
+            this.CardsPicturesHolder[this.i].Visible = true;
+        }
+
+        // this method is added by me (iliyan)
+        private void InitializePanel(Panel panel)
+        {
+            Controls.Add(panel);
+            panel.Location = new Point(this.CardsPicturesHolder[this.i].Left - 10, this.CardsPicturesHolder[this.i].Top - 10);
+            panel.BackColor = Color.DarkBlue;
+            panel.Height = 150;
+            panel.Width = 180;
+            panel.Visible = false;
         }
 
         private async Task Turns()
