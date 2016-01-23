@@ -1073,7 +1073,7 @@
                 Array.Sort(st4);
 
 
-
+                // TODO: NullRefferenceException occurs
                 for (this.i = 0; this.i < 16; this.i++)
                 {
                     if (this.Reserve[this.i] == int.Parse(this.CardsPicturesHolder[c1].Tag.ToString())
