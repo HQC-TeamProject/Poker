@@ -119,7 +119,7 @@
 
         private bool b5Folded;
 
-        private bool intsadded;
+        private bool intsadded; // dafuq o.O
 
         private bool changed;
 
@@ -200,7 +200,7 @@
                     "Assets\\Cards\\15.png","Assets\\Cards\\27.png"};*/
         private readonly int[] Reserve = new int[TotalCardsDealedPerHand];
 
-        private readonly Image[] Deck = new Image[TotalCardsInDeck];
+        private readonly Image[] deckImages = new Image[TotalCardsInDeck];
 
         private readonly PictureBox[] CardsPicturesHolder = new PictureBox[TotalCardsInDeck];
 
@@ -303,7 +303,7 @@
             // this loop picks the first 17 cards from the shuffled deck which will be dealed and assigns then to the players
             for (this.i = 0; this.i < TotalCardsDealedPerHand; this.i++)
             {
-                this.Deck[this.i] = Image.FromFile(this.cardsImageLocations[this.i]);
+                this.deckImages[this.i] = Image.FromFile(this.cardsImageLocations[this.i]);
 
                 var charsToRemove = new[] { "Assets\\Cards\\", ".png" };
                 foreach (var c in charsToRemove)
@@ -328,7 +328,7 @@
                 {
                     //this.InitializePlayerPictureCards(AnchorStyles.Bottom, horizontal, vertical);
                     this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
-                    this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
+                    this.CardsPicturesHolder[this.i].Image = this.deckImages[this.i];
                     this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom;
                     this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                     this.CardsPicturesHolder[this.i].Visible = true;
@@ -382,7 +382,7 @@
 
                         horizontal += this.CardsPicturesHolder[this.i].Width;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
 
 
                         this.InitializePanel(this.b1Panel);
@@ -426,7 +426,7 @@
 
                         horizontal += this.CardsPicturesHolder[this.i].Width;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
 
                         this.InitializePanel(this.b2Panel);
                         //this.Controls.Add(this.b2Panel);
@@ -469,7 +469,7 @@
 
                         horizontal += this.CardsPicturesHolder[this.i].Width;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
 
                         this.InitializePanel(this.b3Panel);
                         //this.Controls.Add(this.b3Panel);
@@ -507,7 +507,7 @@
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Top | AnchorStyles.Right;
                         this.CardsPicturesHolder[this.i].Image = backImage;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                         horizontal += this.CardsPicturesHolder[this.i].Width;
                         this.CardsPicturesHolder[this.i].Visible = true;
@@ -548,7 +548,7 @@
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
                         this.CardsPicturesHolder[this.i].Image = backImage;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                         horizontal += this.CardsPicturesHolder[this.i].Width;
                         this.CardsPicturesHolder[this.i].Visible = true;
@@ -603,7 +603,7 @@
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.None;
                         this.CardsPicturesHolder[this.i].Image = backImage;
 
-                        // CardsPicturesHolder[i].Image = Deck[i];
+                        // CardsPicturesHolder[i].Image = deckImages[i];
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
                         horizontal += 110;
                     }
@@ -755,7 +755,7 @@
         private void InitializePlayerPictureCards(AnchorStyles anchorStyle, int horizontal, int vertical)
         {
             this.CardsPicturesHolder[this.i].Tag = this.Reserve[this.i];
-            this.CardsPicturesHolder[this.i].Image = this.Deck[this.i];
+            this.CardsPicturesHolder[this.i].Image = this.deckImages[this.i];
             this.CardsPicturesHolder[this.i].Anchor = anchorStyle;
             this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
             this.CardsPicturesHolder[this.i].Visible = true;
@@ -2364,7 +2364,7 @@
                 // await Task.Delay(5);
                 if (this.CardsPicturesHolder[j].Visible)
                 {
-                    this.CardsPicturesHolder[j].Image = this.Deck[j];
+                    this.CardsPicturesHolder[j].Image = this.deckImages[j];
                 }
             }
 
@@ -2594,9 +2594,9 @@
             {
                 for (int j = 12; j <= 14; j++)
                 {
-                    if (this.CardsPicturesHolder[j].Image != this.Deck[j])
+                    if (this.CardsPicturesHolder[j].Image != this.deckImages[j])
                     {
-                        this.CardsPicturesHolder[j].Image = this.Deck[j];
+                        this.CardsPicturesHolder[j].Image = this.deckImages[j];
                         this.pCall = 0;
                         this.pRaise = 0;
                         this.b1Call = 0;
@@ -2617,9 +2617,9 @@
             {
                 for (int j = 14; j <= 15; j++)
                 {
-                    if (this.CardsPicturesHolder[j].Image != this.Deck[j])
+                    if (this.CardsPicturesHolder[j].Image != this.deckImages[j])
                     {
-                        this.CardsPicturesHolder[j].Image = this.Deck[j];
+                        this.CardsPicturesHolder[j].Image = this.deckImages[j];
                         this.pCall = 0;
                         this.pRaise = 0;
                         this.b1Call = 0;
@@ -2640,9 +2640,9 @@
             {
                 for (int j = 15; j <= 16; j++)
                 {
-                    if (this.CardsPicturesHolder[j].Image != this.Deck[j])
+                    if (this.CardsPicturesHolder[j].Image != this.deckImages[j])
                     {
-                        this.CardsPicturesHolder[j].Image = this.Deck[j];
+                        this.CardsPicturesHolder[j].Image = this.deckImages[j];
                         this.pCall = 0;
                         this.pRaise = 0;
                         this.b1Call = 0;
