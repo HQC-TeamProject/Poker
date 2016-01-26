@@ -51,6 +51,7 @@
       <DependentUpon>AddChips.cs</DependentUpon>
     </Compile>
     <Compile Include="Contracts\SuitType.cs" />
+    <Compile Include="Core\PlayersManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
