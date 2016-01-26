@@ -15,189 +15,102 @@
         // 5 bots x 2 cards + Player 2 cards = 12
         // community cards (board) = 5 cards total (3 cards for flop, 1 for Turn, 1 for River)
         private const int TotalCardsDealedPerHand = 17;
-
         private const int TotalCardsInDeck = 52;
-
         private const int DefaultCardHeight = 130;
-
         private const int DefaultCardWidth = 80;
-
-        private ProgressBar asd = new ProgressBar();
-
-        public int Nm;
 
         // these panels are the dark blue frame surrounding someone's cards at the end of the hand
         // maybe the initial idea is someone's panel to be set to visible when it's his turn to act
         // so you can easily recognize who's turn is it at the given moment. (iliyan)
         private readonly Panel pPanel = new Panel();
-
         private readonly Panel b1Panel = new Panel();
-
         private readonly Panel b2Panel = new Panel();
-
         private readonly Panel b3Panel = new Panel();
-
         private readonly Panel b4Panel = new Panel();
-
         private readonly Panel b5Panel = new Panel();
 
         private int call = 500;
-
         private int foldedPlayers = 5;
+        private int startingChipsDefault = 10000;
 
-        public int startingChipsDefault = 10000;
-
-        public int bot1Chips = 10000;
-
-        public int bot2Chips = 10000;
-
-        public int bot3Chips = 10000;
-
-        public int bot4Chips = 10000;
-
-        public int bot5Chips = 10000;
+        private int bot1Chips = 10000;
+        private int bot2Chips = 10000;
+        private int bot3Chips = 10000;
+        private int bot4Chips = 10000;
+        private int bot5Chips = 10000;
 
         private double type;
-
         private double rounds;
-
         private double b1Power;
-
         private double b2Power;
-
         private double b3Power;
-
         private double b4Power;
-
         private double b5Power;
-
         private double pPower;
-
         private double pType = -1;
-
         private double Raise;
-
         private double b1Type = -1;
-
         private double b2Type = -1;
-
         private double b3Type = -1;
-
         private double b4Type = -1;
-
         private double b5Type = -1;
 
         private bool B1turn;
-
         private bool B2turn;
-
         private bool B3turn;
-
         private bool B4turn;
-
         private bool B5turn;
-
         private bool B1Fturn;
-
         private bool B2Fturn;
-
         private bool B3Fturn;
-
         private bool B4Fturn;
-
         private bool B5Fturn;
-
         private bool pFolded;
-
         private bool b1Folded;
-
         private bool b2Folded;
-
         private bool b3Folded;
-
         private bool b4Folded;
-
         private bool b5Folded;
-
-        private bool intsadded; // dafuq o.O
-
+        private bool intsadded;
         private bool changed;
 
         private int pCall;
-
         private int b1Call;
-
         private int b2Call;
-
         private int b3Call;
-
         private int b4Call;
-
         private int b5Call;
-
         private int pRaise;
-
         private int b1Raise;
-
         private int b2Raise;
-
         private int b3Raise;
-
         private int b4Raise;
-
         private int b5Raise;
-
         private int height;
-
         private int width;
-
         private int winners;
-
         private int Flop = 1;
-
         private int Turn = 2;
-
         private int River = 3;
-
         private int End = 4;
-
         private int maxLeft = 6;
-
         private int last = 123;
-
         private int raisedTurn = 1;
 
         private readonly List<bool?> bools = new List<bool?>();
-
         private readonly List<Type> Win = new List<Type>();
-
         private readonly List<string> CheckWinners = new List<string>();
-
         private readonly List<int> ints = new List<int>();
 
         private bool PFturn;
-
         private bool Pturn = true;
-
         private bool restart;
-
         private bool raising;
 
         private Type sorted;
 
         private string[] cardsImageLocations = Directory.GetFiles("Assets\\Cards", "*.png", SearchOption.TopDirectoryOnly);
 
-        /*string[] cardsImageLocations ={
-                   "Assets\\Cards\\33.png","Assets\\Cards\\22.png",
-                    "Assets\\Cards\\29.png","Assets\\Cards\\21.png",
-                    "Assets\\Cards\\36.png","Assets\\Cards\\17.png",
-                    "Assets\\Cards\\40.png","Assets\\Cards\\16.png",
-                    "Assets\\Cards\\5.png","Assets\\Cards\\47.png",
-                    "Assets\\Cards\\37.png","Assets\\Cards\\13.png",
-                    
-                    "Assets\\Cards\\12.png",
-                    "Assets\\Cards\\8.png","Assets\\Cards\\18.png",
-                    "Assets\\Cards\\15.png","Assets\\Cards\\27.png"};*/
         private readonly int[] Reserve = new int[TotalCardsDealedPerHand];
 
         private readonly Image[] deckImages = new Image[TotalCardsInDeck];
@@ -205,21 +118,16 @@
         private readonly PictureBox[] CardsPicturesHolder = new PictureBox[TotalCardsInDeck];
 
         private readonly Timer timer = new Timer();
-
         private readonly Timer Updates = new Timer();
 
         private int t = 60;
-
         private int i;
 
         private int bb = 500;
-
         private int sb = 250;
 
         private int up = 10000000;
-
         private int turnCount;
-
         #endregion
 
         public Form1()
@@ -321,6 +229,7 @@
                 this.CardsPicturesHolder[this.i].Name = "pb" + this.i;
 
                 this.Controls.Add(this.CardsPicturesHolder[this.i]);
+
                 await Task.Delay(200);
 
                 // first 2 cards to be dealt are for the player (human, not bots) and this is where it happens (iliyan)
@@ -340,7 +249,6 @@
                     //{
                     //    this.CardsPicturesHolder[1].Tag = this.Reserve[1];
                     //}
-
 
                     // CardsPicturesHolder[i].Dock = DockStyle.Top;
 
@@ -384,7 +292,6 @@
 
                         // CardsPicturesHolder[i].Image = deckImages[i];
 
-
                         this.InitializePanel(this.b1Panel);
                         //this.Controls.Add(this.b1Panel);
                         //this.b1Panel.Location = new Point(this.CardsPicturesHolder[2].Left - 10, this.CardsPicturesHolder[2].Top - 10);
@@ -410,8 +317,9 @@
                             horizontal = 75;
                             vertical = 65;
                         }
-                        check = true;
 
+                        check = true;
+                        
                         //if (this.CardsPicturesHolder[4].Tag != null)
                         //{
                         //    this.CardsPicturesHolder[5].Tag = this.Reserve[5];
@@ -446,6 +354,7 @@
                 if (this.bot3Chips > 0)
                 {
                     this.foldedPlayers--;
+
                     if (this.i >= 6 && this.i < 8)
                     {
                         if (!check)
@@ -453,6 +362,7 @@
                             horizontal = 590;
                             vertical = 25;
                         }
+
                         check = true;
 
                         //if (this.CardsPicturesHolder[6].Tag != null)
@@ -489,6 +399,7 @@
                 if (this.bot4Chips > 0)
                 {
                     this.foldedPlayers--;
+
                     if (this.i >= 8 && this.i < 10)
                     {
                         if (this.CardsPicturesHolder[8].Tag != null)
@@ -545,13 +456,14 @@
                         }
 
                         check = true;
+
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
                         this.CardsPicturesHolder[this.i].Image = backImage;
 
                         // CardsPicturesHolder[i].Image = deckImages[i];
                         this.CardsPicturesHolder[this.i].Location = new Point(horizontal, vertical);
-                        horizontal += this.CardsPicturesHolder[this.i].Width;
                         this.CardsPicturesHolder[this.i].Visible = true;
+                        horizontal += this.CardsPicturesHolder[this.i].Width;
 
                         this.InitializePanel(this.b5Panel);
                         //this.Controls.Add(this.b5Panel);
@@ -598,6 +510,7 @@
                     }
 
                     check = true;
+
                     if (this.CardsPicturesHolder[this.i] != null)
                     {
                         this.CardsPicturesHolder[this.i].Anchor = AnchorStyles.None;
@@ -609,8 +522,6 @@
                     }
                 }
 
-
-
                 if (this.bot1Chips <= 0)
                 {
                     this.B1Fturn = true;
@@ -620,6 +531,7 @@
                 else
                 {
                     this.B1Fturn = false;
+
                     if (this.i == 3)
                     {
                         if (this.CardsPicturesHolder[3] != null)
@@ -633,12 +545,14 @@
                 if (this.bot2Chips <= 0)
                 {
                     this.B2Fturn = true;
+
                     this.CardsPicturesHolder[4].Visible = false;
                     this.CardsPicturesHolder[5].Visible = false;
                 }
                 else
                 {
                     this.B2Fturn = false;
+
                     if (this.i == 5)
                     {
                         if (this.CardsPicturesHolder[5] != null)
@@ -652,12 +566,14 @@
                 if (this.bot3Chips <= 0)
                 {
                     this.B3Fturn = true;
+
                     this.CardsPicturesHolder[6].Visible = false;
                     this.CardsPicturesHolder[7].Visible = false;
                 }
                 else
                 {
                     this.B3Fturn = false;
+
                     if (this.i == 7)
                     {
                         if (this.CardsPicturesHolder[7] != null)
@@ -671,12 +587,14 @@
                 if (this.bot4Chips <= 0)
                 {
                     this.B4Fturn = true;
+
                     this.CardsPicturesHolder[8].Visible = false;
                     this.CardsPicturesHolder[9].Visible = false;
                 }
                 else
                 {
                     this.B4Fturn = false;
+
                     if (this.i == 9)
                     {
                         if (this.CardsPicturesHolder[9] != null)
@@ -690,12 +608,14 @@
                 if (this.bot5Chips <= 0)
                 {
                     this.B5Fturn = true;
+
                     this.CardsPicturesHolder[10].Visible = false;
                     this.CardsPicturesHolder[11].Visible = false;
                 }
                 else
                 {
                     this.B5Fturn = false;
+
                     if (this.i == 11)
                     {
                         if (this.CardsPicturesHolder[11] != null)
@@ -774,8 +694,6 @@
 
         private async Task Turns()
         {
-
-
             if (!this.PFturn)
             {
                 if (this.Pturn)
@@ -821,12 +739,14 @@
                 this.bFold.Enabled = false;
                 this.timer.Stop();
                 this.B1turn = true;
+
                 if (!this.B1Fturn)
                 {
                     if (this.B1turn)
                     {
                         this.FixCall(this.b1ActionStatus, ref this.b1Call, ref this.b1Raise, 1);
                         this.FixCall(this.b1ActionStatus, ref this.b1Call, ref this.b1Raise, 2);
+
                         this.Rules(2, 3, "Bot 1", ref this.b1Type, ref this.b1Power, this.B1Fturn);
                         MessageBox.Show("Bot 1's Turn");
                         this.AI(
@@ -1026,9 +946,8 @@
                     }
                 }
 
-
-
                 await this.AllIn();
+
                 if (!this.restart)
                 {
                     await this.Turns();
@@ -2557,6 +2476,7 @@
                         this.call = 0;
                         this.raisedTurn = 123;
                         this.rounds++;
+
                         if (!this.PFturn)
                         {
                             this.pChipsStatus.Text = string.Empty;
@@ -2597,6 +2517,7 @@
                     if (this.CardsPicturesHolder[j].Image != this.deckImages[j])
                     {
                         this.CardsPicturesHolder[j].Image = this.deckImages[j];
+
                         this.pCall = 0;
                         this.pRaise = 0;
                         this.b1Call = 0;
@@ -2662,6 +2583,7 @@
             if (this.rounds == this.End && this.maxLeft == 6)
             {
                 string fixedLast = "qwerty";
+
                 if (!this.pChipsStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Player";
@@ -2704,6 +2626,7 @@
                 this.Winner(this.b3Type, this.b3Power, "Bot 3", this.bot3Chips, fixedLast);
                 this.Winner(this.b4Type, this.b4Power, "Bot 4", this.bot4Chips, fixedLast);
                 this.Winner(this.b5Type, this.b5Power, "Bot 5", this.bot5Chips, fixedLast);
+
                 this.restart = true;
                 this.Pturn = true;
                 this.PFturn = false;
@@ -2712,6 +2635,7 @@
                 this.B3Fturn = false;
                 this.B4Fturn = false;
                 this.B5Fturn = false;
+
                 if (this.startingChipsDefault <= 0)
                 {
                     AddChips f2 = new AddChips();
@@ -2739,6 +2663,7 @@
                 this.b3Panel.Visible = false;
                 this.b4Panel.Visible = false;
                 this.b5Panel.Visible = false;
+
                 this.pCall = 0;
                 this.pRaise = 0;
                 this.b1Call = 0;
@@ -2754,8 +2679,11 @@
                 this.last = 0;
                 this.call = this.bb;
                 this.Raise = 0;
+
                 this.cardsImageLocations = Directory.GetFiles("Assets\\Cards", "*.png", SearchOption.TopDirectoryOnly);
+
                 this.bools.Clear();
+
                 this.rounds = 0;
                 this.pPower = 0;
                 this.pType = -1;
@@ -2770,12 +2698,15 @@
                 this.b3Type = -1;
                 this.b4Type = -1;
                 this.b5Type = -1;
+
                 this.ints.Clear();
                 this.CheckWinners.Clear();
+
                 this.winners = 0;
                 this.Win.Clear();
                 this.sorted.Current = 0;
                 this.sorted.Power = 0;
+
                 for (int os = 0; os < TotalCardsDealedPerHand; os++)
                 {
                     this.CardsPicturesHolder[os].Image = null;
@@ -2839,8 +2770,6 @@
 
         private async Task AllIn()
         {
-
-
             if (this.startingChipsDefault <= 0 && !this.intsadded)
             {
                 if (this.pChipsStatus.Text.Contains("Raise"))
@@ -2919,12 +2848,9 @@
                 this.ints.Clear();
             }
 
-
-
             var abc = this.bools.Count(x => x == false);
 
             #region LastManStanding
-
             if (abc == 1)
             {
                 int index = this.bools.IndexOf(false);
@@ -2985,16 +2911,13 @@
             }
 
             this.intsadded = false;
-
             #endregion
 
             #region FiveOrLessLeft
-
             if (abc < 6 && abc > 1 && this.rounds >= this.End)
             {
                 await this.Finish(2);
             }
-
             #endregion
         }
 
@@ -3011,6 +2934,7 @@
             this.b3Panel.Visible = false;
             this.b4Panel.Visible = false;
             this.b5Panel.Visible = false;
+
             this.call = this.bb;
             this.Raise = 0;
             this.foldedPlayers = 5;
@@ -3029,6 +2953,7 @@
             this.b3Type = -1;
             this.b4Type = -1;
             this.b5Type = -1;
+
             this.B1turn = false;
             this.B2turn = false;
             this.B3turn = false;
@@ -3049,6 +2974,7 @@
             this.Pturn = true;
             this.restart = false;
             this.raising = false;
+
             this.pCall = 0;
             this.b1Call = 0;
             this.b2Call = 0;
@@ -3071,6 +2997,7 @@
             this.maxLeft = 6;
             this.last = 123;
             this.raisedTurn = 1;
+
             this.bools.Clear();
             this.CheckWinners.Clear();
             this.ints.Clear();
@@ -3087,6 +3014,7 @@
             this.b3ActionStatus.Text = string.Empty;
             this.b4ActionStatus.Text = string.Empty;
             this.b5ActionStatus.Text = string.Empty;
+
             if (this.startingChipsDefault <= 0)
             {
                 AddChips f2 = new AddChips();
@@ -3109,6 +3037,7 @@
             }
 
             this.cardsImageLocations = Directory.GetFiles("Assets\\Cards", "*.png", SearchOption.TopDirectoryOnly);
+
             for (int os = 0; os < TotalCardsDealedPerHand; os++)
             {
                 this.CardsPicturesHolder[os].Image = null;
@@ -3257,6 +3186,7 @@
             Random rPair = new Random();
             int rCall = rPair.Next(10, 16);
             int rRaise = rPair.Next(10, 13);
+
             if (botPower <= 199 && botPower >= 140)
             {
                 this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 6, rRaise);
@@ -3278,6 +3208,7 @@
             Random rPair = new Random();
             int rCall = rPair.Next(6, 11);
             int rRaise = rPair.Next(6, 11);
+
             if (botPower <= 290 && botPower >= 246)
             {
                 this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 3, rRaise);
@@ -3305,6 +3236,7 @@
             Random tk = new Random();
             int tCall = tk.Next(3, 7);
             int tRaise = tk.Next(4, 8);
+
             if (botPower <= 390 && botPower >= 330)
             {
                 this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, tCall, tRaise);
@@ -3328,6 +3260,7 @@
             Random str = new Random();
             int sCall = str.Next(3, 6);
             int sRaise = str.Next(3, 8);
+
             if (botPower <= 480 && botPower >= 410)
             {
                 this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sCall, sRaise);
@@ -3364,6 +3297,7 @@
             Random flh = new Random();
             int fhCall = flh.Next(1, 5);
             int fhRaise = flh.Next(2, 6);
+
             if (botPower <= 626 && botPower >= 620)
             {
                 this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fhCall, fhRaise);
@@ -3386,6 +3320,7 @@
             Random fk = new Random();
             int fkCall = fk.Next(1, 4);
             int fkRaise = fk.Next(2, 5);
+
             if (botPower <= 752 && botPower >= 704)
             {
                 this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fkCall, fkRaise);
@@ -3403,6 +3338,7 @@
             Random sf = new Random();
             int sfCall = sf.Next(1, 3);
             int sfRaise = sf.Next(1, 3);
+
             if (botPower <= 913 && botPower >= 804)
             {
                 this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sfCall, sfRaise);
@@ -3453,6 +3389,7 @@
         {
             Random rand = new Random();
             int rnd = rand.Next(1, 4);
+
             if (this.call <= 0)
             {
                 this.Check(ref sTurn, sStatus);
@@ -3516,6 +3453,7 @@
         {
             Random rand = new Random();
             int rnd = rand.Next(1, 3);
+
             if (this.rounds < 2)
             {
                 if (this.call <= 0)
@@ -3630,6 +3568,7 @@
         {
             Random rand = new Random();
             int rnd = rand.Next(1, 3);
+
             if (this.call <= 0)
             {
                 this.Check(ref botTurn, botStatus);
@@ -3681,7 +3620,6 @@
 
 
         #region UI
-
         private async void timer_Tick(object sender, object e)
         {
             if (this.pbTimer.Value <= 0)
@@ -3735,6 +3673,7 @@
             this.tbBotChips3.Text = "Chips : " + this.bot3Chips;
             this.tbBotChips4.Text = "Chips : " + this.bot4Chips;
             this.tbBotChips5.Text = "Chips : " + this.bot5Chips;
+
             if (this.startingChipsDefault <= 0)
             {
                 this.Pturn = false;
@@ -3828,6 +3767,7 @@
             {
                 this.startingChipsDefault -= this.call;
                 this.tbPlayerChips.Text = "Chips : " + this.startingChipsDefault;
+
                 if (this.tbTotalPot.Text != string.Empty)
                 {
                     this.tbTotalPot.Text = (int.Parse(this.tbTotalPot.Text) + this.call).ToString();
@@ -3859,6 +3799,7 @@
         {
             this.Rules(0, 1, "Player", ref this.pType, ref this.pPower, this.PFturn);
             int parsedValue;
+
             if (this.tbRaise.Text != string.Empty && int.TryParse(this.tbRaise.Text, out parsedValue))
             {
                 if (this.startingChipsDefault > this.call)
@@ -3907,10 +3848,7 @@
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            if (this.tbAddChips.Text == string.Empty)
-            {
-            }
-            else
+            if (this.tbAddChips.Text != string.Empty)
             {
                 this.startingChipsDefault += int.Parse(this.tbAddChips.Text);
                 this.bot1Chips += int.Parse(this.tbAddChips.Text);
@@ -3927,6 +3865,7 @@
         {
             this.tbBB.Text = this.bb.ToString();
             this.tbSB.Text = this.sb.ToString();
+
             if (this.tbBB.Visible == false)
             {
                 this.tbBB.Visible = true;
@@ -3946,6 +3885,7 @@
         private void bSB_Click(object sender, EventArgs e)
         {
             int parsedValue;
+
             if (this.tbSB.Text.Contains(",") || this.tbSB.Text.Contains("."))
             {
                 MessageBox.Show("The Small Blind can be only round number !");
@@ -3981,6 +3921,7 @@
         private void bBB_Click(object sender, EventArgs e)
         {
             int parsedValue;
+
             if (this.tbBB.Text.Contains(",") || this.tbBB.Text.Contains("."))
             {
                 MessageBox.Show("The Big Blind can be only round number !");
@@ -4018,17 +3959,16 @@
             this.width = this.Width;
             this.height = this.Height;
         }
-
         #endregion
 
+        // TODO: remove this method
         private void b2ActionStatus_Click(object sender, EventArgs e)
         {
-
         }
 
+        // TODO: remove this method
         private void tbBotChips2_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
