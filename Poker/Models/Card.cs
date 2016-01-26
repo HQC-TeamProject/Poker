@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Poker.Models
+﻿namespace Poker.Models
 {
-    class Card
+    using Poker.Contracts;
+
+    public class Card
     {
+        public byte Strenght { get; private set; }
+
+        public SuitType Suit { get; private set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Poker.Models
 {
+    using System.Drawing;
     using System.Windows.Forms;
 
     // this class should be inherited by Bot and Human
@@ -28,6 +29,17 @@ namespace Poker.Models
         private int call;
 
         private int raise;
+
+        private void InitializePanel(Panel panel, Control.ControlCollection controls)
+        {
+            Control.ControlCollection Controls = controls;
+            Controls.Add(panel);
+            panel.Location = new Point(this.CardsPicturesHolder[this.i].Left - 10, this.CardsPicturesHolder[this.i].Top - 10);
+            panel.BackColor = Color.DarkBlue;
+            panel.Height = 150;
+            panel.Width = 180;
+            panel.Visible = false;
+        }
 
     }
 }
