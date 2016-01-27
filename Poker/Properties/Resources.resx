@@ -121,4 +121,70 @@
   <data name="poker-table - Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\poker-table - Copy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ChipsZero" xml:space="preserve">
+    <value>Chips : 0</value>
+  </data>
+  <data name="Chips" xml:space="preserve">
+    <value>Chips : </value>
+  </data>
+  <data name="MBox_SavedChanges" xml:space="preserve">
+    <value>The changes have been saved ! They will become available the next hand you play. </value>
+  </data>
+  <data name="MBox_MinBlind" xml:space="preserve">
+    <value>The minimum of the Big Blind is 500 $</value>
+  </data>
+  <data name="MBox_MaxBlind" xml:space="preserve">
+    <value>The maximum of the Big Blind is 200 000</value>
+  </data>
+  <data name="MBox_NumberField" xml:space="preserve">
+    <value>This is a number only field</value>
+  </data>
+  <data name="MBox_RoundedNumber" xml:space="preserve">
+    <value>The Big Blind can be only round number !</value>
+  </data>
+  <data name="MBox_MinCashBlind" xml:space="preserve">
+    <value>The minimum of the Small Blind is 250 $</value>
+  </data>
+  <data name="MBox_MaxCashBlind" xml:space="preserve">
+    <value>The maximum of the Small Blind is 100 000 $</value>
+  </data>
+  <data name="MBox_SBlindRoundNumber" xml:space="preserve">
+    <value>The Small Blind can be only round number !</value>
+  </data>
+  <data name="RaiseStr" xml:space="preserve">
+    <value>Raise </value>
+  </data>
+  <data name="CallStr" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="MBox_RaiseTwice" xml:space="preserve">
+    <value>You must raise atleast twice as the current raise !</value>
+  </data>
+  <data name="AllInStr" xml:space="preserve">
+    <value>All in </value>
+  </data>
+  <data name="CheckStr" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="FoldStr" xml:space="preserve">
+    <value>Fold</value>
+  </data>
+  <data name="MBox_Bot5W" xml:space="preserve">
+    <value>Bot 5 Wins</value>
+  </data>
+  <data name="MBox_Bot4W" xml:space="preserve">
+    <value>Bot 4 Wins</value>
+  </data>
+  <data name="MBox_Bot3W" xml:space="preserve">
+    <value>Bot 3 Wins</value>
+  </data>
+  <data name="MBox_Bot2Win" xml:space="preserve">
+    <value>Bot 2 Wins</value>
+  </data>
+  <data name="MBox_Bot1W" xml:space="preserve">
+    <value>Bot 1 Wins</value>
+  </data>
+  <data name="MBox_PlayerW" xml:space="preserve">
+    <value>Player Wins</value>
+  </data>
 </root>
