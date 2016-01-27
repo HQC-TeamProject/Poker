@@ -185,7 +185,6 @@
             this.tbBotChips2.Size = new System.Drawing.Size(133, 23);
             this.tbBotChips2.TabIndex = 12;
             this.tbBotChips2.Text = "Chips : 0";
-            this.tbBotChips2.TextChanged += new System.EventHandler(this.tbBotChips2_TextChanged);
             // 
             // tbBotChips1
             // 
@@ -300,7 +299,6 @@
             this.b2ActionStatus.Name = "b2ActionStatus";
             this.b2ActionStatus.Size = new System.Drawing.Size(133, 32);
             this.b2ActionStatus.TabIndex = 31;
-            this.b2ActionStatus.Click += new System.EventHandler(this.b2ActionStatus_Click);
             // 
             // labelPot
             // 
