@@ -127,7 +127,7 @@ namespace Poker.Models
 
         public void SetHoleCards(AnchorStyles anchorStyle, Image[] cardsImages)
         {
-            // not sure if .Tag is neccessary (coppied it from Form1.cs)
+            // not sure if .Tag is neccessary (coppied it from Poker.cs)
             // this.HoleCards[0].Tag = this.Reserve[this.i];
 
             for (int i = 0; i < 2; i++)

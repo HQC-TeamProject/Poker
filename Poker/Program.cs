@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Poker
 {
-    using Poker.Models;
+    using global::Poker.Models;
 
     static class Program
     {
@@ -18,7 +18,7 @@ namespace Poker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Poker());
             //Player asd = new 
         }
     }

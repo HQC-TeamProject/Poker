@@ -1,6 +1,6 @@
 ﻿namespace Poker.Models
 {
-    using Poker.Contracts;
+    using global::Poker.Contracts;
 
     public class Card
     {

@@ -2,7 +2,7 @@
 {
     using System.Windows.Forms;
 
-    partial class Form1
+    partial class Poker
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
         {
             this.bFold = new Button();
             this.bCheck = new Button();
-            this.bCall = new Button();
+            this.botCall = new Button();
             this.bRaise = new Button();
             this.pbTimer = new ProgressBar();
             this.tbPlayerChips = new TextBox();
@@ -49,12 +49,12 @@
             this.tbSB = new TextBox();
             this.bSB = new Button();
             this.tbBB = new TextBox();
-            this.b5ActionStatus = new Label();
-            this.b4ActionStatus = new Label();
-            this.b3ActionStatus = new Label();
-            this.b1ActionStatus = new Label();
-            this.pChipsStatus = new Label();
-            this.b2ActionStatus = new Label();
+            this.botFiveActionStatus = new Label();
+            this.botFourActionStatus = new Label();
+            this.botThreeActionStatus = new Label();
+            this.botOneActionStatus = new Label();
+            this.playerChipsStatus = new Label();
+            this.botTwoActionStatus = new Label();
             this.labelPot = new Label();
             this.tbRaise = new TextBox();
             this.SuspendLayout();
@@ -69,7 +69,7 @@
             this.bFold.TabIndex = 0;
             this.bFold.Text = "Fold";
             this.bFold.UseVisualStyleBackColor = true;
-            this.bFold.Click += new System.EventHandler(this.bFold_Click);
+            this.bFold.Click += new System.EventHandler(this.BotFoldClick);
             // 
             // bCheck
             // 
@@ -81,19 +81,19 @@
             this.bCheck.TabIndex = 2;
             this.bCheck.Text = "Check";
             this.bCheck.UseVisualStyleBackColor = true;
-            this.bCheck.Click += new System.EventHandler(this.bCheck_Click);
+            this.bCheck.Click += new System.EventHandler(this.BotCheckClick);
             // 
-            // bCall
+            // botCall
             // 
-            this.bCall.Anchor = AnchorStyles.Bottom;
-            this.bCall.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCall.Location = new System.Drawing.Point(667, 661);
-            this.bCall.Name = "bCall";
-            this.bCall.Size = new System.Drawing.Size(126, 62);
-            this.bCall.TabIndex = 3;
-            this.bCall.Text = "Call";
-            this.bCall.UseVisualStyleBackColor = true;
-            this.bCall.Click += new System.EventHandler(this.bCall_Click);
+            this.botCall.Anchor = AnchorStyles.Bottom;
+            this.botCall.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.botCall.Location = new System.Drawing.Point(667, 661);
+            this.botCall.Name = "botCall";
+            this.botCall.Size = new System.Drawing.Size(126, 62);
+            this.botCall.TabIndex = 3;
+            this.botCall.Text = "Call";
+            this.botCall.UseVisualStyleBackColor = true;
+            this.botCall.Click += new System.EventHandler(this.BotCallClick);
             // 
             // bRaise
             // 
@@ -103,9 +103,9 @@
             this.bRaise.Name = "bRaise";
             this.bRaise.Size = new System.Drawing.Size(124, 62);
             this.bRaise.TabIndex = 4;
-            this.bRaise.Text = "Raise";
+            this.bRaise.Text = "raise";
             this.bRaise.UseVisualStyleBackColor = true;
-            this.bRaise.Click += new System.EventHandler(this.bRaise_Click);
+            this.bRaise.Click += new System.EventHandler(this.BotRaiseClick);
             // 
             // pbTimer
             // 
@@ -137,7 +137,7 @@
             this.bAddChips.TabIndex = 7;
             this.bAddChips.Text = "AddChips";
             this.bAddChips.UseVisualStyleBackColor = true;
-            this.bAddChips.Click += new System.EventHandler(this.bAdd_Click);
+            this.bAddChips.Click += new System.EventHandler(this.BotAddClick);
             // 
             // tbAddChips
             // 
@@ -215,7 +215,7 @@
             this.bOptions.TabIndex = 15;
             this.bOptions.Text = "BB/SB";
             this.bOptions.UseVisualStyleBackColor = true;
-            this.bOptions.Click += new System.EventHandler(this.bOptions_Click);
+            this.bOptions.Click += new System.EventHandler(this.BotOptionsClick);
             // 
             // bBB
             // 
@@ -225,7 +225,7 @@
             this.bBB.TabIndex = 16;
             this.bBB.Text = "Big Blind";
             this.bBB.UseVisualStyleBackColor = true;
-            this.bBB.Click += new System.EventHandler(this.bBB_Click);
+            this.bBB.Click += new System.EventHandler(this.BotBBClick);
             // 
             // tbSB
             // 
@@ -243,7 +243,7 @@
             this.bSB.TabIndex = 18;
             this.bSB.Text = "Small Blind";
             this.bSB.UseVisualStyleBackColor = true;
-            this.bSB.Click += new System.EventHandler(this.bSB_Click);
+            this.bSB.Click += new System.EventHandler(this.BotSBClick);
             // 
             // tbBB
             // 
@@ -253,52 +253,52 @@
             this.tbBB.TabIndex = 19;
             this.tbBB.Text = "500";
             // 
-            // b5ActionStatus
+            // botFiveActionStatus
             // 
-            this.b5ActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
-            this.b5ActionStatus.Location = new System.Drawing.Point(1162, 553);
-            this.b5ActionStatus.Name = "b5ActionStatus";
-            this.b5ActionStatus.Size = new System.Drawing.Size(152, 32);
-            this.b5ActionStatus.TabIndex = 26;
+            this.botFiveActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
+            this.botFiveActionStatus.Location = new System.Drawing.Point(1162, 553);
+            this.botFiveActionStatus.Name = "botFiveActionStatus";
+            this.botFiveActionStatus.Size = new System.Drawing.Size(152, 32);
+            this.botFiveActionStatus.TabIndex = 26;
             // 
-            // b4ActionStatus
+            // botFourActionStatus
             // 
-            this.b4ActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-            this.b4ActionStatus.Location = new System.Drawing.Point(1124, 150);
-            this.b4ActionStatus.Name = "b4ActionStatus";
-            this.b4ActionStatus.Size = new System.Drawing.Size(123, 32);
-            this.b4ActionStatus.TabIndex = 27;
+            this.botFourActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            this.botFourActionStatus.Location = new System.Drawing.Point(1124, 150);
+            this.botFourActionStatus.Name = "botFourActionStatus";
+            this.botFourActionStatus.Size = new System.Drawing.Size(123, 32);
+            this.botFourActionStatus.TabIndex = 27;
             // 
-            // b3ActionStatus
+            // botThreeActionStatus
             // 
-            this.b3ActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-            this.b3ActionStatus.Location = new System.Drawing.Point(606, 124);
-            this.b3ActionStatus.Name = "b3ActionStatus";
-            this.b3ActionStatus.Size = new System.Drawing.Size(125, 32);
-            this.b3ActionStatus.TabIndex = 28;
+            this.botThreeActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            this.botThreeActionStatus.Location = new System.Drawing.Point(606, 124);
+            this.botThreeActionStatus.Name = "botThreeActionStatus";
+            this.botThreeActionStatus.Size = new System.Drawing.Size(125, 32);
+            this.botThreeActionStatus.TabIndex = 28;
             // 
-            // b1ActionStatus
+            // botOneActionStatus
             // 
-            this.b1ActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
-            this.b1ActionStatus.Location = new System.Drawing.Point(28, 544);
-            this.b1ActionStatus.Name = "b1ActionStatus";
-            this.b1ActionStatus.Size = new System.Drawing.Size(142, 32);
-            this.b1ActionStatus.TabIndex = 29;
+            this.botOneActionStatus.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.botOneActionStatus.Location = new System.Drawing.Point(28, 544);
+            this.botOneActionStatus.Name = "botOneActionStatus";
+            this.botOneActionStatus.Size = new System.Drawing.Size(142, 32);
+            this.botOneActionStatus.TabIndex = 29;
             // 
-            // pChipsStatus
+            // playerChipsStatus
             // 
-            this.pChipsStatus.Anchor = AnchorStyles.Bottom;
-            this.pChipsStatus.Location = new System.Drawing.Point(755, 553);
-            this.pChipsStatus.Name = "pChipsStatus";
-            this.pChipsStatus.Size = new System.Drawing.Size(163, 32);
-            this.pChipsStatus.TabIndex = 30;
+            this.playerChipsStatus.Anchor = AnchorStyles.Bottom;
+            this.playerChipsStatus.Location = new System.Drawing.Point(755, 553);
+            this.playerChipsStatus.Name = "playerChipsStatus";
+            this.playerChipsStatus.Size = new System.Drawing.Size(163, 32);
+            this.playerChipsStatus.TabIndex = 30;
             // 
-            // b2ActionStatus
+            // botTwoActionStatus
             // 
-            this.b2ActionStatus.Location = new System.Drawing.Point(99, 150);
-            this.b2ActionStatus.Name = "b2ActionStatus";
-            this.b2ActionStatus.Size = new System.Drawing.Size(133, 32);
-            this.b2ActionStatus.TabIndex = 31;
+            this.botTwoActionStatus.Location = new System.Drawing.Point(99, 150);
+            this.botTwoActionStatus.Name = "botTwoActionStatus";
+            this.botTwoActionStatus.Size = new System.Drawing.Size(133, 32);
+            this.botTwoActionStatus.TabIndex = 31;
             // 
             // labelPot
             // 
@@ -318,7 +318,7 @@
             this.tbRaise.Size = new System.Drawing.Size(108, 20);
             this.tbRaise.TabIndex = 0;
             // 
-            // Form1
+            // Poker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = AutoScaleMode.Font;
@@ -327,12 +327,12 @@
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.tbRaise);
             this.Controls.Add(this.labelPot);
-            this.Controls.Add(this.b2ActionStatus);
-            this.Controls.Add(this.pChipsStatus);
-            this.Controls.Add(this.b1ActionStatus);
-            this.Controls.Add(this.b3ActionStatus);
-            this.Controls.Add(this.b4ActionStatus);
-            this.Controls.Add(this.b5ActionStatus);
+            this.Controls.Add(this.botTwoActionStatus);
+            this.Controls.Add(this.playerChipsStatus);
+            this.Controls.Add(this.botOneActionStatus);
+            this.Controls.Add(this.botThreeActionStatus);
+            this.Controls.Add(this.botFourActionStatus);
+            this.Controls.Add(this.botFiveActionStatus);
             this.Controls.Add(this.tbBB);
             this.Controls.Add(this.bSB);
             this.Controls.Add(this.tbSB);
@@ -349,13 +349,13 @@
             this.Controls.Add(this.tbPlayerChips);
             this.Controls.Add(this.pbTimer);
             this.Controls.Add(this.bRaise);
-            this.Controls.Add(this.bCall);
+            this.Controls.Add(this.botCall);
             this.Controls.Add(this.bCheck);
             this.Controls.Add(this.bFold);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "Poker";
             this.Text = "GLS Texas Poker";
-            this.Layout += new LayoutEventHandler(this.Layout_Change);
+            this.Layout += new LayoutEventHandler(this.LayoutChange);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,7 +365,7 @@
 
         private Button bFold;
         private Button bCheck;
-        private Button bCall;
+        private Button botCall;
         private Button bRaise;
         private ProgressBar pbTimer;
         private TextBox tbPlayerChips;
@@ -382,12 +382,12 @@
         private TextBox tbSB;
         private Button bSB;
         private TextBox tbBB;
-        private Label b5ActionStatus;
-        private Label b4ActionStatus;
-        private Label b3ActionStatus;
-        private Label b1ActionStatus;
-        private Label pChipsStatus;
-        private Label b2ActionStatus;
+        private Label botFiveActionStatus;
+        private Label botFourActionStatus;
+        private Label botThreeActionStatus;
+        private Label botOneActionStatus;
+        private Label playerChipsStatus;
+        private Label botTwoActionStatus;
         private Label labelPot;
         private TextBox tbRaise;
     }

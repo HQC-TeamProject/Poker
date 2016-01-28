@@ -187,4 +187,22 @@
   <data name="MBox_PlayerW" xml:space="preserve">
     <value>Player Wins</value>
   </data>
+  <data name="BotFiveStr" xml:space="preserve">
+    <value>Bot 5</value>
+  </data>
+  <data name="BotFourStr" xml:space="preserve">
+    <value>Bot 4</value>
+  </data>
+  <data name="BotThreeStr" xml:space="preserve">
+    <value>Bot 3</value>
+  </data>
+  <data name="BotTwoStr" xml:space="preserve">
+    <value>Bot 2</value>
+  </data>
+  <data name="BotOneStr" xml:space="preserve">
+    <value>Bot 1</value>
+  </data>
+  <data name="PlayerStr" xml:space="preserve">
+    <value>Player</value>
+  </data>
 </root>

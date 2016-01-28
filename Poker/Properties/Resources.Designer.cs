@@ -70,6 +70,51 @@ namespace Poker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bot 5.
+        /// </summary>
+        internal static string BotFiveStr {
+            get {
+                return ResourceManager.GetString("BotFiveStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bot 4.
+        /// </summary>
+        internal static string BotFourStr {
+            get {
+                return ResourceManager.GetString("BotFourStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bot 1.
+        /// </summary>
+        internal static string BotOneStr {
+            get {
+                return ResourceManager.GetString("BotOneStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bot 3.
+        /// </summary>
+        internal static string BotThreeStr {
+            get {
+                return ResourceManager.GetString("BotThreeStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bot 2.
+        /// </summary>
+        internal static string BotTwoStr {
+            get {
+                return ResourceManager.GetString("BotTwoStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Call.
         /// </summary>
         internal static string CallStr {
@@ -246,6 +291,15 @@ namespace Poker.Properties {
         internal static string MBox_SBlindRoundNumber {
             get {
                 return ResourceManager.GetString("MBox_SBlindRoundNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player.
+        /// </summary>
+        internal static string PlayerStr {
+            get {
+                return ResourceManager.GetString("PlayerStr", resourceCulture);
             }
         }
         
